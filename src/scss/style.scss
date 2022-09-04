@@ -1,0 +1,18 @@
+body {
+    background: url("@img/picture.png") 0 0 no-repeat;
+    span {
+        color: red; 
+    }
+}
+
+@media (max-width: 768px) {
+    span {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        background-color: green;
+    }
+}
