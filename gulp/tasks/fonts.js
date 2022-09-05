@@ -47,7 +47,7 @@ export const fontsStyle = () => {
     let fontsFile = `${app.path.srcFolder}/scss/fonts.scss`;
     // Check if fonts files exist
     fs.readdir(app.path.build.fonts, function(err, fontsFiles){
-        if (fontsFiles) {
+        if (fontsFiles) { 
             // Check if style file for fonts exists
             if (!fs.existsSync(fontsFile)) {
                 // If not, create if
@@ -57,8 +57,13 @@ export const fontsStyle = () => {
                     // Write connection font files in style files
                     let fontFileName = fontsFiles[i].split('.')[0];
                     if (newFileOnly !== fontFileName) {
-                        let fontName = fontFileName.split('-')[0] & fontFileName
-                        let fontWeight = fontFileName.split('-')[1] & fontFileName
+                        let fontName = fontFileName.split('-')[0] ? fontFileName.split('-')[0] : fontFileName;
+                        let fontWeight = fontFileName.split('-')[1] ? fontFileName.split('-')[1] : fontFileName;
+                        if (fontWeight.toLowerCase() === 'thin') {
+                            fontWeight = 100;
+                        } else if (fontWeight.toLowerCase() === 'extralight') {
+                            fontWeight = 200;
+                        }
                     }
                 }
             }
