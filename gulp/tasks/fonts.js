@@ -1,7 +1,6 @@
-import fs, { appendFile } from 'fs';
+import fs from 'fs';
 import fonter from 'gulp-fonter';
 import ttf2woff2 from 'gulp-ttf2woff2';
-import { url } from 'inspector';
 
 export const otfToTtf = () => {
     // Search for font files .otf
@@ -17,6 +16,7 @@ export const otfToTtf = () => {
             formats:['ttf']
         }))
         // Output to src folder
+        console.log(`${app.path.srcFolder}/fonts/`)
         .pipe(app.gulp.dest(`${app.path.srcFolder}/fonts/`)) 
 }
 
@@ -40,7 +40,7 @@ export const ttfToWoff = () => {
         // Convert to .woff2
         .pipe(ttf2woff2())
         // Output to src folder
-        .pipe(app.gulp.dest(`${app.path.srcFolder}/fonts/`)) 
+        .pipe(app.gulp.dest(`${app.path.build.fonts}`)) 
 }
 
 export const fontsStyle = () => {
@@ -51,7 +51,7 @@ export const fontsStyle = () => {
         if (fontsFiles) { 
             // Check if style file for fonts exists
             if (!fs.existsSync(fontsFile)) {
-                // If not, create if
+                // If not, create it
                 fs.writeFile(fontsFile, '', cb);
                 let newFileOnly;
                 for (var i = 0; i < fontsFiles.length; i++) {
@@ -87,8 +87,8 @@ export const fontsStyle = () => {
                             //     font-weight: ${fontWeight};
                             //     font-style: normal;
                             // }\r\n`, cb);
-                        `@font-face {\n\tfont-family: ${fontName};\n\tfont-display: swap;\n\tsrc: url("../fonts/${fontFileName}.woff2") format("woff2"), url("../fonts/${fontFileName}.woff") format("woff");\n\tfont-weight: ${fontWeight};\n\tfont-style: normal;\n}\r\n`, cb);
-                        newFileOnly = fontFileName;
+                            `@font-face {\n\tfont-family: ${fontName};\n\tfont-display: swap;\n\tsrc: url("../fonts/${fontFileName}.woff2") format("woff2"), url("../fonts/${fontFileName}.woff") format("woff");\n\tfont-weight: ${fontWeight};\n\tfont-style: normal;\n}\r\n`, cb);
+                            newFileOnly = fontFileName;
                     }
                 }
             } else {
@@ -98,5 +98,5 @@ export const fontsStyle = () => {
     });
 
     return app.gulp.src(`${app.path.srcFolder}`);
-    function cb() {}
+    function cb() { }
 }
