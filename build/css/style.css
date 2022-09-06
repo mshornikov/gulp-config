@@ -5,7 +5,6 @@
   font-weight: 700;
   font-style: normal;
 }
-
 @font-face {
   font-family: Manrope;
   font-display: swap;
@@ -13,7 +12,6 @@
   font-weight: 800;
   font-style: normal;
 }
-
 @font-face {
   font-family: Manrope;
   font-display: swap;
@@ -21,7 +19,6 @@
   font-weight: 200;
   font-style: normal;
 }
-
 @font-face {
   font-family: Manrope;
   font-display: swap;
@@ -29,10 +26,6 @@
   font-weight: 500;
   font-style: normal;
 }
-
-.no-webp body {
-  background: url("../img/picture.png") 0 0 no-repeat; }
-
 body span {
   color: red;
 }
@@ -41,10 +34,9 @@ body span {
   span {
     font-size: 20px;
   }
-
+}
+@media (max-width: 768px) {
   body {
     background-color: green;
   }
 }
-
-.webp body { background: url(../img/picture.webp) 0 0 no-repeat; }
