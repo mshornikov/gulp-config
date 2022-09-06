@@ -1,6 +1,5 @@
 import fs from 'fs';
-import fonter from 'gulp-fonter';
-import fonter2 from 'gulp-fonter-unx';
+import fonter from 'gulp-fonter-unx';
 import ttf2woff2 from 'gulp-ttf2woff2';
 
 export const otfToTtf = () => {
@@ -13,7 +12,7 @@ export const otfToTtf = () => {
             }))
         )
         // Convert to .ttf
-        .pipe(fonter2({
+        .pipe(fonter({
             formats:['ttf']
         }))
         // Output to src folder
@@ -30,7 +29,7 @@ export const ttfToWoff = () => {
             }))
         )
         // Convert to .woff
-        .pipe(fonter2({
+        .pipe(fonter({
             formats:['woff']
         }))
         // Output to build folder
