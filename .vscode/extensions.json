@@ -1,6 +1,5 @@
 {
     "recommendations": [
-        "ionutvmi.path-autocomplete",
-        "ms-azuretools.vscode-docker"
+        "ionutvmi.path-autocomplete"
     ]
 }
