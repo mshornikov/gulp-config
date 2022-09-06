@@ -1,5 +1,7 @@
+@import 'fonts';
+
 body {
-    background: url("@img/picture.png") 0 0 no-repeat;
+    background: url('@img/picture.png') 0 0 no-repeat;
     span {
         color: red; 
     }

@@ -3,6 +3,7 @@ import plumber from 'gulp-plumber'; // Handling errors
 import notify from 'gulp-notify'; // Messages (tips)
 import browserSync from 'browser-sync'; // Local server
 import newer from 'gulp-newer'; // Check for update
+import ifPlugin from 'gulp-if'; // Conditional branching
 
 // Exporting object
 export const plugins = {
@@ -10,5 +11,6 @@ export const plugins = {
     plumber: plumber,
     notify: notify,
     browserSync: browserSync,
-    newer: newer
+    newer: newer,
+    if: ifPlugin
 }

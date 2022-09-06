@@ -4,5 +4,8 @@
         "@scss": "${folder}/src/scss", // alias for scss
         "@sass": "${folder}/src/sass", // alias for sass
         "@js": "${folder}/src/js", // alias for ks
-    }
+    },
+    "cSpell.words": [
+        "svgicons"
+    ]
 }
