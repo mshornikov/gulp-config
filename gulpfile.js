@@ -32,7 +32,7 @@ function watcher() {
 }
 
 // Fonts processing
-const fonts = gulp.series(otfToTtf, ttfToWoff, fontsStyle);
+export const fonts = gulp.series(otfToTtf, ttfToWoff, fontsStyle);
 
 // Main tasks
 const mainTasks = gulp.series(fonts, gulp.parallel(copy, html, scss, js, images));

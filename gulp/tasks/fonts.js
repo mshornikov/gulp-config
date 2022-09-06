@@ -1,5 +1,6 @@
 import fs from 'fs';
 import fonter from 'gulp-fonter';
+import fonter2 from 'gulp-fonter-unx';
 import ttf2woff2 from 'gulp-ttf2woff2';
 
 export const otfToTtf = () => {
@@ -7,16 +8,15 @@ export const otfToTtf = () => {
     return app.gulp.src(`${app.path.srcFolder}/fonts/*.otf`, {})
         .pipe(app.plugins.plumber(
             app.plugins.notify.onError({
-                title: "FONTS",
-                message: "Error: <%= error.message %>"
+                title: 'FONTS',
+                message: 'Error: <%= error.message %>'
             }))
         )
         // Convert to .ttf
-        .pipe(fonter({
+        .pipe(fonter2({
             formats:['ttf']
         }))
         // Output to src folder
-        console.log(`${app.path.srcFolder}/fonts/`)
         .pipe(app.gulp.dest(`${app.path.srcFolder}/fonts/`)) 
 }
 
@@ -25,12 +25,12 @@ export const ttfToWoff = () => {
     return app.gulp.src(`${app.path.srcFolder}/fonts/*.ttf`, {})
         .pipe(app.plugins.plumber(
             app.plugins.notify.onError({
-                title: "FONTS",
-                message: "Error: <%= error.message %>"
+                title: 'FONTS',
+                message: 'Error: <%= error.message %>'
             }))
         )
         // Convert to .woff
-        .pipe(fonter({
+        .pipe(fonter2({
             formats:['woff']
         }))
         // Output to build folder
@@ -87,12 +87,14 @@ export const fontsStyle = () => {
                             //     font-weight: ${fontWeight};
                             //     font-style: normal;
                             // }\r\n`, cb);
-                            `@font-face {\n\tfont-family: ${fontName};\n\tfont-display: swap;\n\tsrc: url("../fonts/${fontFileName}.woff2") format("woff2"), url("../fonts/${fontFileName}.woff") format("woff");\n\tfont-weight: ${fontWeight};\n\tfont-style: normal;\n}\r\n`, cb);
+                            `@font-face {\n\tfont-family: '${fontName}';\n\tfont-display: swap;\n\tsrc: url('../fonts/${fontFileName}.woff2') format('woff2'), url('../fonts/${fontFileName}.woff') format('woff');\n\tfont-weight: ${fontWeight};\n\tfont-style: normal;\n}\r\n`, cb);
                             newFileOnly = fontFileName;
                     }
                 }
             } else {
-                console.log("File scss/fonts.scss already exists. For file update you should delete it");
+                console.log('');
+                console.log('File scss/fonts.scss already exists. For file update you should delete it');
+                console.log('');
             }
         }
     });
